@@ -1,4 +1,9 @@
-<button pButton type="button" label="PrimeNG Button" class="m-2"></button>
-<button class="btn btn-primary">Bootstrap Button</button>
+<app-navbar (toggleSidebar)="isSidebarCollapsed = !isSidebarCollapsed"></app-navbar>
 
-<router-outlet />
+<div class="app-layout">
+  <app-sidebar [collapsed]="isSidebarCollapsed"></app-sidebar>
+  
+  <div class="content-area">
+    <router-outlet />
+  </div>
+</div>

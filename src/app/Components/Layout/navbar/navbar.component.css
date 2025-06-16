@@ -1,0 +1,9 @@
+.navbarBgColor{
+    background-color: black !important;
+}
+
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}

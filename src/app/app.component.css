@@ -1,0 +1,15 @@
+.app-layout {
+  display: flex;
+}
+
+.content-area {
+  flex-grow: 1;
+  padding: 20px;
+  transition: margin-left 0.3s ease;
+}
+
+.app-layout {
+  display: flex;
+  height: calc(100vh - 56px); /* adjust if navbar is taller */
+  transition: all 0.3s ease;
+}

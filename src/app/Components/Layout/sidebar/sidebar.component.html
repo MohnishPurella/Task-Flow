@@ -1,1 +1,10 @@
-<p>sidebar works!</p>
+<div class="sidebar" [class.collapsed]="collapsed">
+  <ul class="nav flex-column">
+    <li class="nav-item">
+      <a class="nav-link" routerLink="/dashboard" routerLinkActive="active">Dashboard</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" routerLink="/project" routerLinkActive="active">Projects</a>
+    </li>
+  </ul>
+</div>
