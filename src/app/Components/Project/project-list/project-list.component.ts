@@ -1,22 +1,17 @@
 import { Component, OnInit } from '@angular/core';
 import bootstrap from '../../../../main.server';
+import { ProjectFormComponent } from '../project-form/project-form.component';
 
 @Component({
   selector: 'app-project-list',
   standalone: true,
-  imports: [],
+  imports: [ProjectFormComponent],
   templateUrl: './project-list.component.html',
   styleUrl: './project-list.component.css'
 })
-export class ProjectListComponent implements OnInit{
+export class ProjectListComponent{
 
   constructor( ){ }
 
-  ngOnInit(): void {
-    throw new Error('Method not implemented.');
-  }
-
-  addProject(){
-    
-  }
+  addProject(){ }
 }

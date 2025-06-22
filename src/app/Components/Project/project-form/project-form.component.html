@@ -1,1 +1,77 @@
-<p>project-form works!</p>
+<form *ngIf="projectFormGroup" [formGroup]="projectFormGroup" (ngSubmit)="submitForm()">
+    <div class="row row_bottom">
+        <div class="col-3">
+            <label for="projectName" class="form-label">Project Name</label>
+            <input type="text" class="form-control" formControlName="projectName" id="projectName">
+        </div>
+        <div class="col-3">
+            <label for="description" class="form-label">Description</label>
+            <textarea class="form-control" name="description" id="description" rows="1" cols="1" formControlName="description"></textarea>            
+        </div>
+        <div class="col-2">
+            <label for="startDate" class="form-label">Start Date</label>
+            <input type="date" class="form-control" formControlName="startDate" id="startDate">
+        </div>
+        <div class="col-2">
+            <label for="endDate" class="form-label">End Date</label>
+            <input type="date" class="form-control" formControlName="endDate" id="endDate">
+        </div>
+        <div class="col-2">
+            <label for="status" class="form-label">Status</label>
+            <select name="status" id="status" class="form-select" formControlName="endDate">
+                <option *ngFor="let status of statusArr" [value]="status.value">
+                    {{ status.name }}
+                </option>
+            </select>            
+        </div>        
+    </div>
+    <div class="row row_bottom">
+        <div class="col-12 mb-3">
+            <a href="javascript:" class="text-primary" (click)="addTeamMember()"><i class="bi bi-plus m-1">Add</i></a> 
+        </div>     
+        <div class="col-12">
+            <div formArrayName="projectTeam">
+                <div *ngFor="let member of team.controls; let i = index" [formGroupName]="i" class="row row_bottom">
+                    <div class="col-12">
+                        <h6><span class="badge text-bg-primary">Project Team {{i+1}}</span></h6>
+                    </div>
+                    <div class="col-3">
+                        <label class="form-label">Full Name</label>
+                        <input type="text" class="form-control" formControlName="fullName">
+                    </div>
+                    <div class="col-3">
+                        <label class="form-label">Role</label>
+                        <select name="role" id="role" class="form-select" formControlName="role">
+                            <option *ngFor="let role of projectRole" [value]="role.value">
+                                {{ role.name }}
+                            </option>
+                        </select>
+                    </div>
+                    <div class="col-3">
+                        <label class="form-label">Email</label>
+                        <input type="email" class="form-control" formControlName="email">
+                    </div>
+                    <div class="col-2">
+                        <label class="form-label">Availability</label>
+                        <input type="text" class="form-control" formControlName="availability">
+                    </div>
+                    <div class="col-1 d-flex align-items-end">
+                        <a href="javascript:" class="text-danger" (click)="removeTeamMember(i)"><i class="bi bi-trash3"></i></a>
+                    </div> 
+                    <div class="col-12 mt-1"><hr *ngIf="i < team.length - 1"></div>                   
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row mb-1">
+        <div class="col-12">
+            <app-contact-form [parentForm]="projectFormGroup"></app-contact-form>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12 text-end">
+            <button class="btn btn-sm btn-success m-2" type="submit">Save</button>
+            <button type="button" class="btn btn-sm btn-secondary" data-bs-dismiss="modal">Close</button>
+        </div>
+    </div>
+</form>
