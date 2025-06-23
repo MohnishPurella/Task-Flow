@@ -1,0 +1,4 @@
+::ng-deep .p-fileupload-buttonbar .p-button {
+  margin-right: 0.5rem; /* or whatever spacing looks right */
+  border-radius: 6px;
+}

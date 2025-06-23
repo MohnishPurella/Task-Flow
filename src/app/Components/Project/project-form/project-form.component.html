@@ -1,5 +1,5 @@
 <form *ngIf="projectFormGroup" [formGroup]="projectFormGroup" (ngSubmit)="submitForm()">
-    <div class="row row_bottom">
+    <div class="row mb-3">
         <div class="col-3">
             <label for="projectName" class="form-label">Project Name</label>
             <input type="text" class="form-control" formControlName="projectName" id="projectName">
@@ -18,20 +18,20 @@
         </div>
         <div class="col-2">
             <label for="status" class="form-label">Status</label>
-            <select name="status" id="status" class="form-select" formControlName="endDate">
+            <select name="status" id="status" class="form-select" formControlName="status">
                 <option *ngFor="let status of statusArr" [value]="status.value">
                     {{ status.name }}
                 </option>
             </select>            
         </div>        
     </div>
-    <div class="row row_bottom">
+    <div class="row mb-3">
         <div class="col-12 mb-3">
             <a href="javascript:" class="text-primary" (click)="addTeamMember()"><i class="bi bi-plus m-1">Add</i></a> 
         </div>     
         <div class="col-12">
             <div formArrayName="projectTeam">
-                <div *ngFor="let member of team.controls; let i = index" [formGroupName]="i" class="row row_bottom">
+                <div *ngFor="let member of team.controls; let i = index" [formGroupName]="i" class="row mb-3">
                     <div class="col-12">
                         <h6><span class="badge text-bg-primary">Project Team {{i+1}}</span></h6>
                     </div>
@@ -63,15 +63,20 @@
             </div>
         </div>
     </div>
-    <div class="row mb-1">
+    <div class="row mb-3">
         <div class="col-12">
             <app-contact-form [parentForm]="projectFormGroup"></app-contact-form>
         </div>
     </div>
+    <div class="row mb-3">
+        <div class="col-12">            
+            <input class="form-control" type="file" id="formFileMultiple" formControlName="fileUpload" (change)="onFileSelected($event)"  multiple>
+        </div>
+    </div>
     <div class="row">
         <div class="col-12 text-end">
-            <button class="btn btn-sm btn-success m-2" type="submit">Save</button>
-            <button type="button" class="btn btn-sm btn-secondary" data-bs-dismiss="modal">Close</button>
+            <button class="btn btn-success m-2" type="submit">Save</button>
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
         </div>
     </div>
 </form>

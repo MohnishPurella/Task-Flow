@@ -24,22 +24,25 @@ export class ProjectFormComponent implements OnInit{
     {name:'QA', value: 'qa'},
     {name:'PM', value: 'pm'},
   ]
+  selectedFiles: File[] = [];
+
   constructor(
     private formBuilder:FormBuilder,
-  ){ }
-
-  ngOnInit(): void {
+  ){ 
     this.buildForm();
   }
+
+  ngOnInit(): void { }
 
   buildForm() {
     this.projectFormGroup = this.formBuilder.group({
       projectName: ['',Validators.required],
       description: [],
       startDate: ['',Validators.required],
-      endDate: [],
-      status: [],
-      projectTeam: this.formBuilder.array([])
+      endDate: [''],
+      status: [''],
+      projectTeam: this.formBuilder.array([]),
+      fileUpload: ['']
     });
     this.addTeamMember();
   }
@@ -67,5 +70,12 @@ export class ProjectFormComponent implements OnInit{
 
   submitForm(){
     console.log(this.projectFormGroup?.value);
+  }  
+
+  onFileSelected(event: Event): void {
+    const input = event.target as HTMLInputElement;
+    if (input.files && input.files.length > 0) {      
+      this.selectedFiles = Array.from(input.files);
+    }
   }
 }
